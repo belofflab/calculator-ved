@@ -224,6 +224,18 @@ npm install docx@9            # once; docx-js renders the .docx
 node scripts/build_docx_report.js reports/report_data.json reports/VED_calculations.docx
 ```
 
+## Business case: shoe store in Tyumen
+
+`reports/Tyumen_shoe_store_business_case.docx` is a Russian-language business case built on the engine:
+market sizing, real rental listings with a recommended cheap option, CAPEX/OPEX, unit economics with the
+engine's landed cost, three 24-month scenarios with monthly P&L and cash flow, break-even, sensitivity,
+marketing plan, legal steps, launch timeline and risks. Regenerate with:
+
+```bash
+python scripts/business_case_tyumen.py reports/business_case_data.json
+node scripts/build_business_case_docx.js reports/business_case_data.json reports/Tyumen_shoe_store_business_case.docx
+```
+
 ## Testing
 
 ```bash
