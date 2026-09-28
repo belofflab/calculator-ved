@@ -51,6 +51,9 @@ pycodestyle = { max-line-length = 120 }
 select = ["E", "F", "I", "B", "UP", "W", "N", "RUF"]
 ignore = ["RUF001", "RUF002", "RUF003"]  # Cyrillic text in docstrings/comments is intentional
 
+[tool.ruff.lint.per-file-ignores]
+"scripts/*" = ["E501"]  # long Russian strings and regex templates in report tooling
+
 [tool.ruff.lint.isort]
 known-first-party = ["ved_calculator"]
 

@@ -211,6 +211,19 @@ Entries marked `verified=False` in `reference/tariffs.py` are indicative and pro
 calculation that uses them. **All figures are reference defaults for planning; confirm the 10-digit
 ТН ВЭД line, current rates and forwarder quotes with a licensed broker before declaring.**
 
+## Word report (выгрузка расчётов в Word)
+
+`reports/VED_calculations.docx` is a full Russian-language export of every calculation for the bundled
+sample request: inputs, reference rates, formulas, the route matrix with all cost components,
+step-by-step derivations per clearance scheme, the KG-vs-RU customs comparison, a sensitivity
+analysis and six additional shipments. Regenerate it for any request in two steps:
+
+```bash
+python scripts/export_report_data.py examples/sample_request.json reports/report_data.json
+npm install docx@9            # once; docx-js renders the .docx
+node scripts/build_docx_report.js reports/report_data.json reports/VED_calculations.docx
+```
+
 ## Testing
 
 ```bash

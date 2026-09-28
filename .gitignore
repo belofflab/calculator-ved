@@ -21,3 +21,6 @@ htmlcov/
 .idea/
 .vscode/
 .DS_Store
+
+# Generated report data (regenerate with scripts/export_report_data.py)
+reports/*.json
