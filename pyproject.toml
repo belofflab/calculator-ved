@@ -1,0 +1,73 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ved-calculator"
+version = "0.1.0"
+description = "VED Calculator Core: landed-cost, customs and cross-border logistics optimisation engine for imports into Russia via Bishkek (EAEU)."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "VED Calculator Core contributors" }]
+keywords = ["customs", "logistics", "EAEU", "landed-cost", "TN VED", "HS code", "FX"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Intended Audience :: Developers",
+  "Topic :: Office/Business :: Financial",
+  "Typing :: Typed",
+]
+dependencies = [
+  "pydantic>=2.6,<3",
+]
+
+[project.optional-dependencies]
+api = ["fastapi>=0.110", "uvicorn>=0.29"]
+dev = ["pytest>=8", "ruff>=0.5", "mypy>=1.10"]
+
+[project.scripts]
+ved-calculator = "ved_calculator.__main__:main"
+
+[tool.setuptools.packages.find]
+include = ["ved_calculator*"]
+
+[tool.setuptools.package-data]
+ved_calculator = ["py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+filterwarnings = ["error::DeprecationWarning:ved_calculator.*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+pycodestyle = { max-line-length = 120 }
+select = ["E", "F", "I", "B", "UP", "W", "N", "RUF"]
+ignore = ["RUF001", "RUF002", "RUF003"]  # Cyrillic text in docstrings/comments is intentional
+
+[tool.ruff.lint.isort]
+known-first-party = ["ved_calculator"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+plugins = ["pydantic.mypy"]
+warn_unreachable = true
+
+[[tool.mypy.overrides]]
+module = ["tests.*"]
+disallow_untyped_defs = false
+
+[[tool.mypy.overrides]]
+module = ["fastapi", "fastapi.*"]
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = ["ved_calculator.api"]
+disallow_untyped_decorators = false

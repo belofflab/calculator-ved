@@ -1,0 +1,26 @@
+{
+  "origin_country": "CHINA",
+  "destination_city_ru": "Tyumen",
+  "cargo": {
+    "category": "footwear",
+    "hs_code": "6404 11 000 0",
+    "total_weight_kg": "500",
+    "total_volume_m3": "2.5",
+    "declared_value_origin": "12000",
+    "origin_currency": "USD",
+    "quantity_units": 400,
+    "description": "Sneakers, 400 pairs, 40 cartons"
+  },
+  "target_delivery_days_max": null,
+  "allow_cargo_simplified": true,
+  "allow_white_customs": true,
+  "include_direct_ru_benchmark": true,
+  "fx_risk_buffer_percent": "2.5",
+  "target_sale_price_rub_per_unit": "6900",
+  "assumptions": {
+    "recipient_tax_regime": "USN",
+    "kg_import_vat_recoverable": false,
+    "customs_valuation_basis": "INVOICE",
+    "agent_markup_percent": "2.0"
+  }
+}
